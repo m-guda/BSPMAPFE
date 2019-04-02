@@ -14,21 +14,21 @@ export default class Bookmark extends React.Component {
         this.removeFav = this.removeFav.bind(this);
         this.state = {
           visibility : false,
-          color: '#fffa8b',
+          color: 'red',
         
         }
       }
 
       addFav(x) {
-        console.log(this.props.id)
+        console.log("id.......",this.props.id)
         {(!localStorage.getItem("AccessToken")) ?alert("Please Login to Bookmark") : this.setState({visibility:true})} 
         x.beat="true";
 
         body = {
-          Token : localStorage.getItem("AccessToken"),
-          favourites :this.props.id
+          accesstoken : localStorage.getItem("AccessToken"),
+          favbook:this.props.id
         }
-
+console.log("idfav........",this.props.id);
         const url = "http://10.10.200.19:9000/favourite"; 
           let headers = new Headers();
 
@@ -61,7 +61,7 @@ export default class Bookmark extends React.Component {
            alert("Please Login to Remove Bookmark")}
         else {
 
-              const url = "http://10.10.200.19:9000/favourite?id="+this.props.id; 
+              const url = "http://10.10.200.19:9000/favourite"; 
                 let headers = new Headers();
       
                 headers.append('Content-Type', 'application/json');

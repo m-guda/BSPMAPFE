@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import NavBar from '../App/navbar/index';
 import L from 'leaflet';
 import './map.css';
 import {Form,Button,} from 'react-bootstrap';
 
 import { FormControl} from 'react-bootstrap';
-import { createBrowserHistory as createHistory } from "history";
-
-import NavBar from '../../components/App/navbar/index';
-
-
 var body;
+
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -24,7 +21,6 @@ const position = [17.440081, 78.348915];
 class LeafletMap extends Component {
   constructor(props) {
     super(props);
-    
     this.handleChange = this.handleChange.bind(this);
     this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
     this.handleLatChange = this.handleLatChange.bind(this);
@@ -33,13 +29,69 @@ class LeafletMap extends Component {
   this.state = {
     fields: {},
     errors: {},
-    lati:"",
-    longi:"",
+     lati:"",
+     longi:"",
     latiVal:"",
     longiVal:"",
    
   };
 };
+
+handleChange(e) {
+  let fields = this.state.fields;
+  fields[e.target.name] = e.target.value;
+  this.setState({
+    fields
+  });
+
+}
+submituserRegistrationForm(e) {
+  e.preventDefault();
+  body = {
+    username : this.state.fields.username,
+    email : this.state.fields.email,
+    password:this.state.fields.password,
+    phoneno:this.state.fields.phoneno,
+    address:this.state.fields.address,
+    // pincode:this.state.fields.pincode,
+    latitude:this.state.lati,
+    longitude:this.state.longi
+  }
+  console.log(body);
+      let fields = {};
+      fields["username"] = "";
+      fields["email"] = "";
+      fields["phoneno"] = "";
+      fields["password"] = "";
+      fields["address"]="";
+      // fields["pincode"]="";
+      fields["lati"]="";
+      fields["longi"]=""
+      
+const url = "http://10.10.200.19:9000/users"; 
+let headers = new Headers();
+
+headers.append('Content-Type', 'application/json');
+headers.append('Accept', 'application/json');
+
+headers.append('Access-Control-Allow-Origin', url);
+headers.append('Access-Control-Allow-Credentials', 'true');
+
+headers.append( 'GET','POST');
+
+e.preventDefault();
+fetch(url, {
+    headers: headers,
+    method: 'POST',
+    body: JSON.stringify(body) 
+})
+.then(console.log(this.state.fields))
+.catch(() => console.log("Can’t access " + url + " response. "))
+
+this.setState({fields:fields});
+      alert("Form submitted");
+
+}
 
   handleLatChange = event => {
     this.setState({
@@ -50,9 +102,9 @@ class LeafletMap extends Component {
     this.setState({
       longiVal: event.target.value
     });
-  }
-   
-
+  }   
+  
+  
   handleClick = (e) => {
     this.props.setMarker({
       latitude: e.latlng.lat,
@@ -64,70 +116,10 @@ class LeafletMap extends Component {
       longi:e.latlng.lng,
   
     });
-    console.log("latitude:"+ this.state.lati)
+    console.log("lattitude:"+ this.state.lati)
     console.log("longitude:"+ this.state.longi)
   };
 
-  handleChange(e) {
-    
-    let fields = this.state.fields;
-    fields[e.target.name] = e.target.value;
-    this.setState({
-      fields
-    });
-
-  }
-  history = createHistory(this.props);
-
-  submituserRegistrationForm(e) {
-    console.log("1");
-    e.preventDefault();
-    body = {
-      username : this.state.fields.username,
-      email : this.state.fields.email,
-      password:this.state.fields.password,
-      phoneno:this.state.fields.phoneno,
-      address:this.state.fields.address,
-      latitude:this.state.fields.latitude,
-      longitude:this.state.fields.longitude
-    }
-    console.log(body);
-    
-    if (this.validateForm()) {
-        let fields = {};
-        fields["username"] = "";
-        fields["email"] = "";
-        fields["phoneno"] = "";
-        fields["password"] = "";
-        fields["address"]="";
-        fields["latitude"]="";
-        fields["longitude"]="";
-        
-  const url = "http://10.10.200.19:9000/users"; 
-  let headers = new Headers();
-
-  headers.append('Content-Type', 'application/json');
-  headers.append('Accept', 'application/json');
-
-  headers.append('Access-Control-Allow-Origin', url);
-  headers.append('Access-Control-Allow-Credentials', 'true');
-
-  headers.append( 'GET','POST');
-  
-  e.preventDefault();
-  fetch(url, {
-      headers: headers,
-      method: 'POST',
-      body: JSON.stringify(body) 
-  })
-.then(console.log(this.state.fields))
-.catch(() => console.log("Can’t access " + url + " response. "))
-this.props.history.push(`/Login`)
-this.setState({fields:fields});
-        alert("Form submitted");
-    }
-
-  }
 
   validateForm() {
 
@@ -188,21 +180,25 @@ this.setState({fields:fields});
       formIsValid = false;
       errors["address"] = "Please enter your address.";
     }
-    if (!fields["latitude"]) {
-      formIsValid = false;
-      errors["latitude"] = "Please enter your address.";
-    }
-    if (!fields["longitude"]) {
-      formIsValid = false;
-      errors["longitude"] = "Please enter your address.";
-    }
+
    /* if (typeof fields["address"] !== "undefined") {
       if (!fields["address"].match(/^\d{1,3}.?\d{0,3}\s[a-zA-Z]{2,30}\s[a-zA-Z]{2,15}/)) {
         formIsValid = false;
         errors["address"] = "Please enter address.";
       }
     }*/
-   
+    // if (!fields["pincode"]) {
+    //   formIsValid = false;
+    //   errors["pincode"] = "Please enter your pincode.";
+    // }
+
+    // if (typeof fields["pincode"] !== "undefined") {
+    //   if (!fields["pincode"].match(/^[0-9]{6}$/)) {
+    //     formIsValid = false;
+    //     errors["pincode"] = "Please enter valid pincode.";
+    //   }
+    // }
+
 
     this.setState({
       errors: errors
@@ -215,11 +211,10 @@ this.setState({fields:fields});
   
   render() {
     return (
-     
       <div >
-      <NavBar/>
-        <br/><br/><br/><br/> <br/><br/><br/><br/>
-        <div class ="container-fluid" style={{width:"1000px",height:"auto"}}>
+           <NavBar/>
+          <br/><br/><br/><br/> <br/><br/><br/><br/>
+          <div class ="container-fluid" style={{width:"1000px",height:"auto"}}>
           <div class="card">
           <div class="card-body px-lg-6 pt-0" >
           <h3 className="my-3"> Register</h3>
@@ -254,24 +249,14 @@ this.setState({fields:fields});
               <input type="text" class="form-control" name="address" value={this.state.fields.address} onChange={this.handleChange} />
               <div className="errorMsg">{this.state.errors.address}</div>
               </div>
-              <div class="md-form">
-              <label for="inputIconEx6">Latitude</label>
-              <input type="text" class="mr-sm-2" name="latitude" value={this.state.fields.lati} onChange={this.handleLatChange} />
-              {/* <div className="errorMsg">{this.state.errors.latiVal}</div> */}
-              </div>
-              <div class="md-form">
-              <label for="inputIconEx6">Longitude</label>
-              <input type="text" class="mr-sm-2" name="longitude" value={this.state.fields.longi} onChange={this.handleLongChange} />
-              {/* <div className="errorMsg">{this.state.errors.longitude}</div> */}
-              </div>      
-
+              <div>
               <Form className="form" >
           <div >
           <Form inline>
-          {/* <FormControl 
+          <FormControl 
               readOnly
             type="text" 
-            placeholder="Latitude" 
+            placeholder="Lattitude" 
             className="mr-sm-2"
             value={this.state.lati} 
             onChange={this.handleLatChange}
@@ -283,9 +268,9 @@ this.setState({fields:fields});
             placeholder="Longitude" 
             className="mr-sm-2"
             value={this.state.longi}  
-            onChange={this.handleLongChange}  */}
+            onChange={this.handleLongChange} 
           />
-      <Map>
+      <Map
         ref={this.mapRef}
         center={position} 
         zoom={13} 
@@ -296,21 +281,17 @@ this.setState({fields:fields});
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
-        {
-          this.props.markers.map((m) => (
-            <Marker position={[parseFloat(m.latitude), parseFloat(m.longitude)]}>
-              <Popup>latitude:{m.latitude}<br />longitude:{m.longitude}</Popup>
-            </Marker>
-          ))
-        }
+          <Marker position={[parseFloat(this.props.marker.latitude), parseFloat(this.props.marker.longitude)]}>
+            <Popup>latitude:{this.props.marker.latitude}<br />longitude:{this.props.marker.longitude}</Popup>
+          </Marker>
       </Map>
       </Form>        
 
-      {/* <Button type="submit" >Submit</Button> */}
+   
       </div>
       </Form>
 
-
+              </div>
         
               <button class="btn btn-info btn-block my-4" type="submit" name="button" onClick={this.handleChange}>Register</button>  
               <p>Already Registered?&nbsp;&nbsp;<a href="/login">LOGIN</a></p>
@@ -318,9 +299,7 @@ this.setState({fields:fields});
       </div>
       </div>
  </div>
-          
-        
-      </div>
+       </div>
     );
   }
 }

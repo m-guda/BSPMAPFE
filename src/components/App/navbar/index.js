@@ -13,7 +13,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
-import Search from '../search/index';
+// import Search from '../search/index';
 
 
 
@@ -43,7 +43,7 @@ export default class NavBar extends React.Component  {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto">
-          <NavItem> <Search/></NavItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {/* <NavItem> <Search/></NavItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
          
           <NavItem>
          

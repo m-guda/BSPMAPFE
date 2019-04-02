@@ -3,7 +3,8 @@ import { Card, Button, CardImg, CardTitle, CardText, CardDeck,
  CardSubtitle, CardBody } from 'reactstrap';
 
  import {withRouter} from 'react-router-dom';
-
+import Bookmark from '../bookmarks';
+import MapLocate from '../maplocate/maplocate'
 let id;
 class Cards extends React.Component { 
   constructor(props) {
@@ -13,7 +14,7 @@ class Cards extends React.Component {
   
     }
     this.onButtonChange=this.onButtonChange.bind(this);
-
+    this.onButtonClick=this.onButtonClick.bind(this);
 }
 onButtonChange(event) {
   this.setState(
@@ -29,7 +30,7 @@ onButtonChange(event) {
  this.props.history.push({
     pathname: path,
     state: {
-       id:event.currentTarget.value
+       id:event.currentTarget.value,
 
     }
     
@@ -37,25 +38,48 @@ onButtonChange(event) {
    console.log("pushstate........."+this.state.id)
    
 }
+onButtonClick(event) {
+  let path=`maplocate`;
+  
+  this.props.history.push({
+     pathname: path,
+     state: {
+        id:event.currentTarget.value,
+ 
+     }
+     
+    });
+  }
+  
+   
+
+
 render() {
   return (
     
     <div style={{display: 'flex', flexWrap:'wrap', margin: '5px'}}>
       {
         
+        
         this.props.books.map((book) => {
           return (
-            <Card style={{width:'400px', margin:'10px', height:'500px'}}>
+            <Card style={{width:'500px', margin:'10px', height:'900px'}}>
             <CardImg top width="20%" height="65%" src={book.imageUrls} alt="Card image cap" />
             <CardBody>
               <CardTitle>Title:{book.title}</CardTitle>
               <CardSubtitle>Author:{book.author}</CardSubtitle>
-              <CardTitle>Price:  {book.price}</CardTitle>
               <CardTitle>Location:  {book.user.address}</CardTitle>
+              
+              <a onClick={this.onButtonChange} href="/viewmore">Details</a>
+              <hr/>
+              <hr/><Bookmark id={book.id}/>
               {/*<CardSubtitle>{book.category}</CardSubtitle>
               <CardSubtitle>{book.count}</CardSubtitle>
           <CardSubtitle>{book.user.username}</CardSubtitle>{console.log('printing username............'+book.username)}*/}
-               <Button onClick={this.onButtonChange} value={book.id}>Details</Button>
+          
+          <CardTitle>Price:  ${book.price}</CardTitle>
+          {/* <MapLocate data={this.state.data} history={this.props.history}/> */}
+               <Button onClick={this.onButtonClick} value={book.id}>Locate Book</Button>
             </CardBody>
           </Card>
           )

@@ -248,7 +248,7 @@ const { form} = this.state;
     return (
       <div>
       <LoginNav /><br/><br/><br/>
-      <div class ="container">
+      <div class ="container-fluid" style={{width:"1000px",height:"auto"}}>
       <div class="card">
         <div class="card-body px-lg-6 pt-0" >
         <h3 className="my-3"> Sell A Book </h3>

@@ -18,6 +18,8 @@ import Profile from './components/App/profile/index';
 import AboutUs from './components/App/aboutus/index';
 import Reachout from "./components/App/homepage/reachout";
 //import Locatebook from './locatebook/index';
+import MapLocate from './components/App/maplocate/maplocate'
+import View from './components/App/view/index';
 
 import {
     BrowserRouter as Router,
@@ -29,6 +31,7 @@ import HomeLogin from "./components/App/homelogin";
 import Viewmore from "./components/App/viewmore";
  
 import MapRender from './components/mapRender';
+// import LocateBook from "./components/App/locatebook/index"
 class App extends PureComponent {
  
   render() {
@@ -49,7 +52,8 @@ class App extends PureComponent {
                 <Route exact path="/updateprofile" component={UpdateProfile}/>
                 <Route exact path="/reachout" component={Reachout}/>
                 <Route exact path="/viewmore" component={Viewmore}/>
-                
+                <Route exact path="/view" component={View}/>
+                <Route exact path="/maplocate" component={MapLocate}/>
            
         {/* <Route exact path="/Maps" component={MapRender}/> */}
             <Redirect to="/" component={Homepage}/>
