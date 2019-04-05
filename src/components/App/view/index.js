@@ -1,7 +1,8 @@
 import React from "react";
-
+import Bookmark from '../bookmarks/index'
 import { Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
+import CondNav from "../condnav";
 //import {CardColumns} from "reactstrap";
 
 let name;
@@ -11,11 +12,30 @@ class View extends React.Component {
         super(props);
         name=(this.props.location.state.category)
         console.log(name)
+        this.onButtonChange =this.onButtonChange.bind(this);
         this.state = {
-          data : []
+          data : [],
+          id:''
         }
       }
     
+      onButtonChange(event) {
+        this.setState({id:event.currentTarget.value}, ()=>{
+          console.log(this.state.id)
+        }
+        
+        );
+        console.log(this.state.id)
+        let path=`viewmore`;
+        
+       this.props.history.push({
+          pathname: path,
+          state: {
+             id:event.currentTarget.value
+          }
+         });
+         
+      }
     componentDidMount() {
         //const url = "http://localhost:9000/books"; 
         const url = "http://10.10.200.19:9000/books/category?name="+name;
@@ -47,46 +67,59 @@ class View extends React.Component {
        
         return (
             <div>
-               <br/><br/>
-                <h3><b>VIEW BOOKS</b></h3>
+                <CondNav/>
+            <br/><br/><br/><br/>
+            <div>
                 
+               <br/><br/><center>
+                <h3><b>VIEW BOOKS</b></h3>
+                </center>
                 <br></br>
-                <div style={{position:'relative'}}>
+               
                 
                  
                 
                {/* <div style={{display: 'inline-block'}}>*/}
                <div style={{display: 'flex', flexWrap:'wrap', margin: '5px'}}>
-                <div>{this.state.data.map((Booksplorer,index) =>{
+               {this.state.data.map((book,index) =>{
                     
                 return(
                    
-                    <Card style={{width:'350px', margin:'10px'}}>
-                    <CardImg top width="30%" src={Booksplorer.imageUrls} alt="Card image cap" />
-                       <CardBody> 
-                           <div key={index}>
-                               <CardTitle>{Booksplorer.title}</CardTitle>
-                               <CardSubtitle>{Booksplorer.author}</CardSubtitle>
-                               <hr className="my-2"/>
-                               <CardText>{Booksplorer.price}</CardText>
-
-                               <Button onClick={this.onButtonChange}>Locate Book</Button>
-                               </div>
-                           
-                       </CardBody>
-                   </Card>
+                    <Card style={{width:'300px', margin:'10px', height:'500px'}}>
+                    <CardImg top width="10%" height="55%" src={book.imageUrls} alt="Card image cap" />
+                    <CardBody>
+                    <center>
+                      <CardTitle><strong>Title:{book.title}</strong></CardTitle>
+                      <CardSubtitle><strong>Author:{book.author}</strong></CardSubtitle>
+                      <CardTitle><strong> Location: {book.user.address}</strong></CardTitle>
+                      </center>
+                      
+                      <hr/>
+                      <div style={{float:'right'}}>
+                      <Bookmark id={book.id} /></div>
+                      {/*<CardSubtitle>{book.category}</CardSubtitle>
+                      <CardSubtitle>{book.count}</CardSubtitle>
+                  <CardSubtitle>{book.user.username}</CardSubtitle>{console.log('printing username............'+book.username)}*/}
+                  
+                  <CardTitle><strong>Price:  Rs {book.price}</strong></CardTitle>
+                  {/* <MapLocate data={this.state.data} history={this.props.history}/> */}
+                  <center>
+                  {/* <Button onClick={this.onButtonChange} value={book.id}>Details</Button> */}
+                  </center>
+                    </CardBody>
+                  </Card>
 
                        
                     
                     
                     )
                 })}
-                </div>
+               
                 </div>
                 <br></br>
                 </div>
                 </div>
-            
+              
                 
             
         );

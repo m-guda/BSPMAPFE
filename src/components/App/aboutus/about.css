@@ -1,0 +1,14 @@
+body{
+    margin: 0px;
+    width: 200vh;
+    height: 200vh;
+  }
+  
+  #root{
+    height: 100%;
+  }
+  
+  
+  .map{
+    height: 100%;
+  }

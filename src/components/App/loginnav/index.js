@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
-import MdContact from 'react-ionicons/lib/MdContact'
+import IosContactOutline from 'react-ionicons/lib/IosContact';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 var body;
 class LoginNav extends Component {
 state = {
@@ -48,33 +61,34 @@ Logout() {
 
 render() {
   return (
-    <MDBNavbar color="dark" dark expand="md">
-      <MDBNavbarBrand href="/">
-       <h3> <strong className="black-text">Booksplorer</strong></h3>
-      </MDBNavbarBrand>
-      <MDBNavbarToggler onClick={this.toggleCollapse} />
-      <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-      <MDBNavbarNav right>
-      <MDBNavItem>
-           <h5> <MDBNavLink to="/aboutus">About us</MDBNavLink></h5>
-          </MDBNavItem>
-          <MDBNavItem>
-           <h5> <MDBNavLink to="/viewbook">View book</MDBNavLink></h5>
-          </MDBNavItem>
-          <MDBNavItem>
-           <h5> <MDBNavLink to="/reachout">Reach out</MDBNavLink></h5>
-          </MDBNavItem>
-          <MDBNavItem>
-           <h5> <MDBNavLink to="/sellbook">Sell A Book</MDBNavLink></h5>
-          </MDBNavItem>
+    <div class="container">
+      <div class="row">
+          <Navbar color="dark" fixed="top" dark expand="md" scrolling dark>
+          <div class="col">
+          <NavbarBrand href="/" style={{ fontSize : "30px"}}>Booksplorer</NavbarBrand>
+          </div>
+          
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto">
+          {/* <NavItem> <Search/></NavItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
+         
+          <NavItem>
+         
+          <NavbarBrand href="/aboutus" >About Us</NavbarBrand>
+          <NavbarBrand href="/viewbook" >ViewBook</NavbarBrand>
+          
+          {/* <NavbarBrand href="/reachout" >Reach Out!</NavbarBrand> */}
+          <NavbarBrand href="/sellbook" >Sell A Book</NavbarBrand>
+          </NavItem>
           <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
-               <MdContact/>
+               <IosContactOutline color='white' style={{size:'100'}}/>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default" right>
                 <MDBDropdownItem href="/profile">View Profile</MDBDropdownItem>
-                <MDBDropdownItem href="#!">View Orders</MDBDropdownItem>
+                {/* <MDBDropdownItem href="#!">View Orders</MDBDropdownItem> */}
                 <MDBDropdownItem href="/" onClick={this.Logout}>Logout</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
@@ -82,10 +96,12 @@ render() {
           <MDBNavItem>
         
           </MDBNavItem>
-        
-        </MDBNavbarNav>
-      </MDBCollapse>
-    </MDBNavbar>
+          </Nav>    
+          </Collapse>
+         
+          </Navbar>
+          </div>
+          </div>
     );
   }
 }

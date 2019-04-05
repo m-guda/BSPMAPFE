@@ -31,6 +31,9 @@ import HomeLogin from "./components/App/homelogin";
 import Viewmore from "./components/App/viewmore";
  
 import MapRender from './components/mapRender';
+import CreateBook from './components/App/updatebook/createdbook';
+import UpdateBook from './components/App/updatebook/updatebook';
+import Wishlist from './components/App/wishlist/index';
 // import LocateBook from "./components/App/locatebook/index"
 class App extends PureComponent {
  
@@ -53,6 +56,10 @@ class App extends PureComponent {
                 <Route exact path="/reachout" component={Reachout}/>
                 <Route exact path="/viewmore" component={Viewmore}/>
                 <Route exact path="/view" component={View}/>
+                <Route exact path="/wishlist" component={Wishlist}/>
+
+                <Route exact path="/updatebook" component={CreateBook}/>
+                <Route exact path="/editbook" component={UpdateBook}/>
                 <Route exact path="/maplocate" component={MapLocate}/>
            
         {/* <Route exact path="/Maps" component={MapRender}/> */}

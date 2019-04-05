@@ -4,7 +4,7 @@ import NavBar from '../App/navbar/index';
 import L from 'leaflet';
 import './map.css';
 import {Form,Button,} from 'react-bootstrap';
-
+import Footer from '../App/footer'
 import { FormControl} from 'react-bootstrap';
 var body;
 
@@ -298,7 +298,10 @@ this.setState({fields:fields});
          </form>
       </div>
       </div>
- </div>
+ </div> <br/><br/>
+        <div>
+            <Footer/>
+        </div>
        </div>
     );
   }

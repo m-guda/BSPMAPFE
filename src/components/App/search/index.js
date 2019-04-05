@@ -18,11 +18,13 @@ class Search extends React.Component{
       }
       onButtonClick() {     
         let name=this.state.search
+        let name1=this.state.author;
         console.log(name);
-      //   console.log(this.props.location.pathname)
-      //   if(this.props.location.pathname == "/Search")
-      //  // <SearchDetails name={this.state.name}/>
-      //      window.location.reload()
+        console.log(name1);
+        console.log(this.props.location.pathname)
+         if(this.props.location.pathname == "/Search")
+       // <SearchDetails name={this.state.name}/>
+        window.location.reload()
        let path=`search`;
        this.props.history.push({
           pathname: path,
@@ -44,7 +46,7 @@ class Search extends React.Component{
             <div class="container"> 
                     <Row >
                     <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search the book by title and author"  style={{height:'150%'}} onChange={this.handleChange}/>
+    <input type="text" class="form-control" placeholder="Search the book by title and author"  style={{height:'50px',width:'900px'}} onChange={this.handleChange}/>
     <div class="input-group-append">
     
       <button class="btn btn-secondary" type="button" onClick={this.onButtonClick}>

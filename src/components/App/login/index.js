@@ -80,12 +80,20 @@ onRegisterClick(){
  render(){
 
   return (
+
+    <div 
+            style={{backgroundImage: "url(" + "http://bestanimations.com/Books/harry-potter-books-magic-animated-gif.gif" + ")",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            height: '100vh',
+            }}>
     <div>
       <NavBar/>
       <br/><br/><br/><br/>
       <br/><br/><br/><br/>
       <br/><br/><br/><br/>
-      <div class ="container-fluid" style={{width:"600px",height:"1000px"}}>
+      <div class ="container-fluid" style={{width:"600px",height:"500px"}}>
       <div class="card">
         <div class="card-body px-lg-6 pt-0" >
         <h3 className="my-3"> Login</h3>
@@ -107,7 +115,9 @@ onRegisterClick(){
    
     </div>
     </div></div>
+    <div></div>
     </div>
+     </div>
   );
 }
 

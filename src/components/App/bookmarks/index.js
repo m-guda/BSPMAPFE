@@ -2,6 +2,7 @@ import React from "react"
 import { render } from 'react-dom'
 import MdOut from 'react-ionicons/lib/MdHeartOutline'
 import MdHeart from 'react-ionicons/lib/MdHeart'
+// react-icons/lib/fa/heart
 
 var body;
 export default class Bookmark extends React.Component {
@@ -21,7 +22,7 @@ export default class Bookmark extends React.Component {
 
       addFav(x) {
         console.log("id.......",this.props.id)
-        {(!localStorage.getItem("AccessToken")) ?alert("Please Login to Bookmark") : this.setState({visibility:true})} 
+        {(!localStorage.getItem("AccessToken")) ?alert("Please Login to add Favourites") : this.setState({visibility:true})} 
         x.beat="true";
 
         body = {
@@ -61,7 +62,9 @@ console.log("idfav........",this.props.id);
            alert("Please Login to Remove Bookmark")}
         else {
 
-              const url = "http://10.10.200.19:9000/favourite"; 
+          
+
+              const url = "http://10.10.200.19:9000/favourite?id="+this.props.id+"&Token="+localStorage.getItem("AccessToken"); 
                 let headers = new Headers();
       
                 headers.append('Content-Type', 'application/json');

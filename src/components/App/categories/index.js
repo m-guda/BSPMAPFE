@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import SelectInput from '@material-ui/core/Select/SelectInput';
 import {withRouter} from 'react-router-dom';
-import View from '../view/index';
+// import View from '../view/index';
 //import CardView from '../cardview/index';
-import fantacy from '../images/fantacy.jpeg';
-import art from '../images/art.jpeg';
-
-import history from '../images/history.jpeg';
-import technical from '../images/technical.jpg';
-import others from '../images/others.jpeg';
-
-
+import art from "../images/art.jpeg";
+import biography from "../images/biography.jpeg";
+import children from "../images/children.jpg";
+import education from "../images/education.jpg";
+import fantacy from "../images/fantacy.jpg";
+import fiction from "../images/fiction.jpeg";
+import history from "../images/history.jpeg";
+import literature from"../images/literature.jpeg";
+import music from "../images/music.jpeg";
+import mystery from "../images/mystery.jpeg"
+import others from "../images/others.jpeg"
+// import play from "../images/play.jpg";
+import romance from "../images/romance.jpeg";
+import science from "../images/science.jpeg";
+import technical from "../images/technical.jpg"
+import horror from "../images/horror.jpeg"
 
 var key;
 
@@ -24,6 +32,7 @@ const styles = theme => ({
     flexWrap: 'wrap',
     minWidth: 300,
     width: '100%',
+    display:"inline-block"
   },
   image: {
     position: 'relative',
@@ -85,7 +94,7 @@ const styles = theme => ({
     width: 18,
     backgroundColor: theme.palette.common.white,
     position: 'absolute',
-    bottom: -2,
+    bottom: -1,
     left: 'calc(50% - 9px)',
     transition: theme.transitions.create('opacity'),
   },
@@ -93,18 +102,48 @@ const styles = theme => ({
 
 const images = [
   {
+    url: art,
+    value: 'Art',
+    width: '20%',
+    height:'50%',
+  },
+  {
+    url: biography,
+    value: 'Biography',
+    width: '20%',
+    height:'50%',
+  },
+  
+  {
+    url: children,
+    value: 'Children',
+    width: '20%',
+    height:'50%',
+  },
+  {
+    url: education,
+    value: 'Education',
+    width: '20%',
+    height:'50%',
+  },
+  {
     url: fantacy,
     value: 'Fantacy',
     width: '20%',
     height:'50%',
   },
   {
-    url: art,
-    value: 'Art',
+    url: fiction,
+    value: 'Fiction',
     width: '20%',
     height:'50%',
   },
-  
+  {
+    url: horror,
+    value: 'Horror',
+    width: '20%',
+    height:'50%',
+  },
   {
     url: history,
     value: 'History',
@@ -112,8 +151,44 @@ const images = [
     height:'50%',
   },
   {
+    url: literature,
+    value: 'Literature',
+    width: '20%',
+    height:'50%',
+  },
+  {
+    url: music,
+    value: 'Music',
+    width: '20%',
+    height:'50%',
+  },
+  {
+    url: mystery,
+    value: 'Mystery',
+    width: '20%',
+    height:'50%',
+  },
+  // {
+  //   url: play,
+  //   value: 'Play',
+  //   width: '20%',
+  //   height:'50%',
+  // },
+  {
+    url: romance,
+    value: 'Romance',
+    width: '20%',
+    height:'50%',
+  },
+  {
+    url: science,
+    value: 'Science',
+    width: '20%',
+    height:'50%',
+  },
+  {
     url: technical,
-    value: 'Technical',
+    value: 'Textbooks',
     width: '20%',
     height:'50%',
   },
@@ -151,7 +226,7 @@ class Category extends React.Component {
 
   
 
-    console.log("sending category"+category)
+    console.log("sending category..." + category)
     let path= `/view/`;
     this.props.history.push({
       pathname: path,
@@ -181,7 +256,7 @@ class Category extends React.Component {
                         key={image.value}
                         value={image.value}
                         className={classes.image}
-                        
+                    
                         focusVisibleClassName={classes.focusVisible}
                         style={{width: image.width}}
                     >
@@ -192,22 +267,25 @@ class Category extends React.Component {
                         />
                         <span className={classes.imageBackdrop} />
                         <span className={classes.imageButton}>
+                       
                             <Typography
                                 component="span"
                                 variant="subtitle1"
                                 color="inherit"
                                 className={classes.imageTitle}
-                            >
+                            >    
                                 {image.value}
                                 <span className={classes.imageMarked} />
                             </Typography>
                         </span>
                     </ButtonBase>
+                    
                 ))}
+              <br/><br/><br/> 
             </div>
             
 </center>
-         
+
       </div>
 
     )

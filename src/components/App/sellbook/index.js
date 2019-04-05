@@ -246,9 +246,17 @@ class SellBook extends React.Component {
     }
 const { form} = this.state;
     return (
+      <div 
+      style={{backgroundImage: "url(" + "http://pictures.4ever.eu/data/download/other/old-books,-africa,-map,-compass-257918.jpg?no-logo" + ")",
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      height: '100vh',
+      }}>
       <div>
       <LoginNav /><br/><br/><br/>
-      <div class ="container-fluid" style={{width:"1000px",height:"auto"}}>
+      <div class ="container-fluid" style={{width:"500px",height:"auto"}}>
+      <br/><br/>
       <div class="card">
         <div class="card-body px-lg-6 pt-0" >
         <h3 className="my-3"> Sell A Book </h3>
@@ -283,12 +291,21 @@ const { form} = this.state;
 		  <label>Category</label>
 		  <select id="inputState" class="form-control" value={this.state.category} name="category" onChange={this.handleChange} >
 		    <option> Choose...</option>
-		      <option value="History">History </option>{console.log(this.state.category)}
-		      <option value="Education">Education </option>
-          <option value="Art">Art </option>
-          <option value="Mystery">Mystery </option>
+		      <option value="Art">Art</option>{console.log(this.state.category)}
+		      <option value="Biography">Biography </option>
+          <option value="Children">Children</option>
+          <option value="Education">Education</option>
           <option value="Fantacy">Fantacy </option>
-          <option value="Biography">Biography </option>
+          <option value="Fiction ">Fiction </option>
+          <option value="Horror">Horror </option>
+          <option value="History">History </option>
+          <option value="Literature">Literature </option>
+          <option value="Music">Music </option>
+          <option value="Mystery">Mystery </option>
+          <option value="Play">Play </option>
+          <option value="Romance">Romance </option>
+          <option value="Science">Science </option>
+          <option value="Technical">Technical </option>
           <option value="others">Others </option>
          
 		  </select>
@@ -311,6 +328,7 @@ const { form} = this.state;
    </div>
    </div>
   
+      </div>
       </div>
       );
     }

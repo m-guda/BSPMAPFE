@@ -37,7 +37,7 @@ export default class NavBar extends React.Component  {
       <div class="row">
           <Navbar color="dark" fixed="top" dark expand="md" scrolling dark>
           <div class="col">
-          <NavbarBrand href="/" style={{ fontSize : "50px"}}>Booksplorer</NavbarBrand>
+          <NavbarBrand href="/" style={{ fontSize : "30px"}}>Booksplorer</NavbarBrand>
           </div>
           
           <NavbarToggler onClick={this.toggle} />
@@ -50,7 +50,7 @@ export default class NavBar extends React.Component  {
           <NavbarBrand href="/aboutus" >About Us</NavbarBrand>
           <NavbarBrand href="/viewbook" >ViewBook</NavbarBrand>
           
-          <NavbarBrand href="/reachout" >Reach Out!</NavbarBrand>
+          {/* <NavbarBrand href="/reachout" >Reach Out!</NavbarBrand> */}
           <NavbarBrand href="/login" >Login</NavbarBrand>
           
           </NavItem>

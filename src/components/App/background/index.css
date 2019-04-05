@@ -12,14 +12,14 @@
     background-size: cover;
     }*/
     html { 
-      background: url("http://www.wallpapers4u.org/wp-content/uploads/vintage_magnifier_watch_book_books_postcards_74944_1920x1080.jpg") no-repeat center center fixed; 
+      background: url("#") no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
     }
     body{
-       background-image: url("http://www.wallpapers4u.org/wp-content/uploads/vintage_magnifier_watch_book_books_postcards_74944_1920x1080.jpg") ;
+       background-image: url("#") ;
        height: 100vh;
        background-size: cover;
        border: 2px solid black;
@@ -28,7 +28,7 @@
        background-size: cover;
        }
     .bg {
-       background: url("http://www.wallpapers4u.org/wp-content/uploads/vintage_magnifier_watch_book_books_postcards_74944_1920x1080.jpg");
+       background: url("#");
        -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -37,4 +37,5 @@
     
     /* http://myzeroone.com/myzeroone/17542-mac-book-backgrounds_25635.jpg 
     https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80
+    http://www.wallpapers4u.org/wp-content/uploads/vintage_magnifier_watch_book_books_postcards_74944_1920x1080.jpg
     */

@@ -19,11 +19,11 @@ class Cards extends React.Component {
 onButtonChange(event) {
   this.setState(
     {id:event.currentTarget.value}, ()=>{
-    console.log("id.........."+this.state.id)
+    console.log("id.........."+this.setState.id)
   }
   
   );
-  console.log("state........."+this.setState.id)
+  console.log("state........."+this.state.id)
 
   let path=`viewmore`;
   
@@ -31,6 +31,29 @@ onButtonChange(event) {
     pathname: path,
     state: {
        id:event.currentTarget.value,
+      //  data: books
+
+    }
+    
+   });
+  
+   
+}
+onButtonClick(event) {
+  this.setState(
+    {id:event.currentTarget.value}, ()=>{
+    console.log("id.........."+this.state.id)
+  }
+  
+  );
+  console.log("state........."+this.setState.id)
+
+  let path=`maplocate`;
+  
+ this.props.history.push({
+    pathname: path,
+    state: {
+      data : []
 
     }
     
@@ -38,21 +61,6 @@ onButtonChange(event) {
    console.log("pushstate........."+this.state.id)
    
 }
-onButtonClick(event) {
-  let path=`maplocate`;
-  
-  this.props.history.push({
-     pathname: path,
-     state: {
-        id:event.currentTarget.value,
- 
-     }
-     
-    });
-  }
-  
-   
-
 
 render() {
   return (
@@ -60,26 +68,29 @@ render() {
     <div style={{display: 'flex', flexWrap:'wrap', margin: '5px'}}>
       {
         
-        
         this.props.books.map((book) => {
           return (
-            <Card style={{width:'500px', margin:'10px', height:'900px'}}>
-            <CardImg top width="20%" height="65%" src={book.imageUrls} alt="Card image cap" />
+          
+            <Card style={{width:'300px', margin:'10px', height:'550px'}}>
+            <CardImg top width="10%" height="55%" src={book.imageUrls} alt="Card image cap" />
             <CardBody>
-              <CardTitle>Title:{book.title}</CardTitle>
-              <CardSubtitle>Author:{book.author}</CardSubtitle>
-              <CardTitle>Location:  {book.user.address}</CardTitle>
+            <center>
+              <CardTitle><strong>Title:{book.title}</strong></CardTitle>
+              <CardSubtitle><strong>Author:{book.author}</strong></CardSubtitle>
+              <CardTitle><strong> Location: {book.user.address}</strong></CardTitle>
+              </center>
               
-              <a onClick={this.onButtonChange} href="/viewmore">Details</a>
               <hr/>
-              <hr/><Bookmark id={book.id}/>
+              <div style={{float:'right'}}>
+              <Bookmark id={book.id} /></div>
               {/*<CardSubtitle>{book.category}</CardSubtitle>
               <CardSubtitle>{book.count}</CardSubtitle>
           <CardSubtitle>{book.user.username}</CardSubtitle>{console.log('printing username............'+book.username)}*/}
           
-          <CardTitle>Price:  ${book.price}</CardTitle>
+          <CardTitle><strong>Price:  Rs {book.price}</strong></CardTitle>
           {/* <MapLocate data={this.state.data} history={this.props.history}/> */}
-               <Button onClick={this.onButtonClick} value={book.id}>Locate Book</Button>
+          <center>
+          <Button onClick={this.onButtonChange} value={book.id}>Details</Button></center>
             </CardBody>
           </Card>
           )

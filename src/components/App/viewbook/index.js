@@ -5,7 +5,7 @@ import Cards from "../card/index";
 import axios from "axios";
 import "../card/Book.css";
 import {withRouter} from 'react-router-dom';
-
+import Footer from '../footer';
 
 import CondNav from "../condnav";
 
@@ -46,7 +46,8 @@ class ViewBook extends React.Component {
         <CondNav/><br/><br/><br/><br/>
      
         <Cards books={this.state.books} />
-        
+        <br/><br/>
+        <Footer/>
         </div>
       );
     }
