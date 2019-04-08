@@ -33,55 +33,31 @@ class AboutUs extends React.Component {
 
     render(){
         const position = [this.state.location.lat, this.state.location.lng];
-        return (   
-            // <div 
-            // style={{backgroundImage: "url(" + "http://bestanimations.com/Books/harry-potter-books-magic-animated-gif.gif" + ")",
-            // backgroundPosition: 'center',
-            // backgroundSize: 'cover',
-            // backgroundRepeat: 'no-repeat',
-            // height: '100vh',
-            // }}>         
-            <div>
-              <CondNav/> <br/><br/><br/><br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <div class="container-fluid">
-                <div class="card">
-                <div class="card-body px-lg-6 pt-0" >
-                <br/><br/>
-                <h1 style={{fontSize : '45px'}}><center>What we do?</center></h1>
-                <br/>
-                <br/>
-                <br/>
-                <p style={{fontSize : '20px'}}>
-                    Booksplorer is a one-stop destination for your search for finding the perfect bookstores around you. It helps you set various parameters and lets you find the book of your choice.
-                    <br/><br/>
-                    We save you time and money by searching every major catalog or book online, and letting you know which booksellers near you are offering the best deals. When you find a book you like, you can buy it directly from the original seller; we never charge a markup.
-                    <br/><br/>You can use us to search for any book you want, comparing the prices and offers among many bookstores near you. This means that you can find the best offer for the book you want from the nearest bookstore,  without needing to visit all those bookstores, one by one. </p>
-                    <br/>
-                    <br/>
-                    {/* <center><img src="https://cdn.pixabay.com/photo/2016/10/13/19/24/book-1738607_960_720.jpg" width="500" height="400"></img></center> */}
-                    <br/>
-                    <br/>  
-                    </div>
-                    <div >
-                    <h1 style={{fontSize : '45px'}}><center>Where we are?</center></h1>
-                                       
-                    <br/>
-                        <p style={{fontSize : '20px'}}>
-                           <center>
+        return (    
+          <div>
+          <CondNav/><br/><br/><br/><br/><br/><br/>
+          <div class="container"  style={{width:"2000px",height:"auto"}}>
+      <div className="card">
+      <div class="row">
+      <div className="col md-6">
+      <h1 style={{fontSize : '45px'}}><center>What we do?</center></h1>
+     <p style={{fontSize : '20px', textAlign: "justify"}}>
+     Booksplorer is a one-stop destination for your search for finding the perfect bookstores around you. It helps you set various parameters and lets you find the book of your choice.
+    <br/><br/>
+    We save you time and money by searching every major catalog or book online, and letting you know which booksellers near you are offering the best deals. When you find a book you like, you can buy it directly from the original seller; we never charge a markup.
+    <br/><br/>You can use us to search for any book you want, comparing the prices and offers among many bookstores near you. This means that you can find the best offer for the book you want from the nearest bookstore,  without needing to visit all those bookstores, one by one.
+     </p>
+      </div>
+      <div className="col md-6">
+      <h1 style={{fontSize : '45px'}}><center>Where we are?</center></h1>
+     <center> <p style={{fontSize : '20px'}}>
+                        
                            Booksplorer<br/>
-                           
                             Maclab, GNITS<br/>
-                            Shaikpet, Hyderabad<br/>   
-                            </center>     
-                        </p>
-                        <br/>
-                        <br/>  
-
-                        <Map ref={this.mapRef} center={position} zoom={13} style={{ height: '500px', width: '50%' }} >
+                            Shaikpet, Hyderabad<br/>  
+                            </p></center>
+                            <div className="container">
+                            <Map ref={this.mapRef} center={position} zoom={13} style={{ height: '400px', width: '100%' }} >
                         <TileLayer
                             // attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -93,13 +69,20 @@ class AboutUs extends React.Component {
                         Hey,we are here!
                         </Popup>
                         </Marker>
-                        </Map>   
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    //  </div>
- 
+                        </Map>  
+                        </div>
+                       
+      </div>
+     
+      </div>
+      </div>
+      </div>
+      
+     
+     </div>
+    
+    
+     
         );
     }
     }

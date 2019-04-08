@@ -109,53 +109,45 @@ class Viewmore extends React.Component{
 
         return (
             
-            <div style={{backgroundImage: "url(" + "https://wallpapermemory.com/uploads/407/book-wallpaper-hd-1440x900-128900.jpg" + ")",
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            height: '100vh',
-            }}>
-            >
-                
-                     
-                          <CondNav/><br></br><br></br>
-                           <div > {
-                             
-                                    <center><br></br>
-                                <MDBCard style={{ minWidth: "10em",maxWidth:"50em" ,minHeight: "40em",maxHeight:"auto",background: "white",flex:1 }} >
+            <div>
+          <CondNav/><br/><br/><br/><br/><br/><br/>
+          <div class="container"  style={{width:"2000px",height:"auto"}}>
+      <div className="card">
+      <div class="row">
+      <div className="col md-6">
+      <MDBCard style={{ minWidth: "10em",maxWidth:"50em" ,minHeight: "40em",maxHeight:"auto",background: "white",flex:1 }} >
                                
-                                <MDBCardBody className="text-black">
-                                    <MDBCardTitle><span>{this.state.name}</span><br></br></MDBCardTitle>
-                                    <MDBCardImage className="img-fluid" src={this.state.imgurls} height="200" width="400"/>    
-                                   {/* <Carousel>
-                                    {this.state.imgurls.map(function(img, j){return <img className="imgurl" key={j} src={img}/>})}
-                                    </Carousel>*/}
-                                    <div style={{marginTop:"2em"}}>
-                                    <h5>
+                               <MDBCardBody className="text-black">
+                                   <MDBCardTitle><span>{this.state.name}</span><br></br></MDBCardTitle>
+                                   <MDBCardImage className="img-fluid" src={this.state.imgurls} height="200" width="400"/>    
+                                   <div style={{marginTop:"1em"}}>
+                                 
                                             <span className="details" >Title&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.title}</span><br></br> 
                                             {/* <span className="details" >Title&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.user.username}</span><br></br>  */}
                                             <span className="details" >Price&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.price}</span><br></br>  
                                             <span className="details" >Category&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.category}</span><br></br>
                                             <span className="details"> Copies &nbsp;&nbsp;:&nbsp;&nbsp;{this.state.count}</span><br></br><br/>
+                                            <span className="details" >Description&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.description}</span><br></br> 
                                             <center><h4>User Details</h4></center>
                                             <span className="details" ><IosContactOutline/>&nbsp;&nbsp;User Name&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.username}</span><br></br>
                                             <span className="details" ><MdCall/>&nbsp;&nbsp;Contact Us&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.phoneno}</span><br></br> <br/>
                                            
-                                            <span className="details" >Description&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.description}</span><br></br> 
+                                           
                                             
                                            
                                     
-                                    </h5>
+                                  
                                     
                                     </div>
-                                    <div>
-        <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Locate Book</Button>
-        <Collapse isOpen={this.state.collapse}>
-        <Map
+                                   </MDBCardBody>
+                                   </MDBCard>        
+      </div>
+      <div className="col md-6">
+      <Map
                                                 ref={this.mapRef}
                                                 center={position}
                                                 zoom={13}
-                                                style={{ height: '350px', width: '100%' }}
+                                                style={{ height: '1000px', width: '100%' }}
                                             >
 
                                                 <TileLayer
@@ -177,26 +169,16 @@ class Viewmore extends React.Component{
                                                 </Popup>
                                                 </Marker>
                                             </Map>
-        </Collapse>
-      </div>            
-        
-        
-       
-                                           
-                                  
-                                    </MDBCardBody>
-                                </MDBCard>
-                                
-                            
-                                </center>
-                               
-                           }
-                                </div>
-
-
-
-                        
-            </div>
+                       
+      </div>
+     
+      </div>
+      </div>
+      </div>
+      
+     
+     </div>   
+         
         )
     }
 }

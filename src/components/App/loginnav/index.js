@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
+import logo from '../images/logo.png'
 import IosContactOutline from 'react-ionicons/lib/IosContact';
 import {
   Collapse,
@@ -63,9 +64,13 @@ render() {
   return (
     <div class="container">
       <div class="row">
-          <Navbar color="dark" fixed="top" dark expand="md" scrolling dark>
+          <Navbar color="light" fixed="top" dark expand="md" scrolling dark>
           <div class="col">
-          <NavbarBrand href="/" style={{ fontSize : "30px"}}>Booksplorer</NavbarBrand>
+          {/* <NavbarBrand href="/" style={{ fontSize : "30px"}}>Booksplorer</NavbarBrand> */}
+          <NavbarBrand href="/">
+          <img src={logo} style={{height:'40px'}}/>
+          </NavbarBrand>
+
           </div>
           
           <NavbarToggler onClick={this.toggle} />
@@ -75,16 +80,16 @@ render() {
          
           <NavItem>
          
-          <NavbarBrand href="/aboutus" >About Us</NavbarBrand>
-          <NavbarBrand href="/viewbook" >ViewBook</NavbarBrand>
+          <NavbarBrand href="/aboutus" style={{color:'black'}}>About Us</NavbarBrand>
+          <NavbarBrand href="/viewbook" style={{color:'black'}}>ViewBook</NavbarBrand>
           
           {/* <NavbarBrand href="/reachout" >Reach Out!</NavbarBrand> */}
-          <NavbarBrand href="/sellbook" >Sell A Book</NavbarBrand>
+          <NavbarBrand href="/sellbook" style={{color:'black'}}>Sell A Book</NavbarBrand>
           </NavItem>
           <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
-               <IosContactOutline color='white' style={{size:'100'}}/>
+               <IosContactOutline color='black' style={{size:'100'}}/>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default" right>
                 <MDBDropdownItem href="/profile">View Profile</MDBDropdownItem>

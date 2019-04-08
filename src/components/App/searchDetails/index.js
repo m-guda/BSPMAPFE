@@ -261,10 +261,11 @@ class SearchDetails extends React.Component {
                 <label><strong><h3>Search Results:</h3></strong></label>
                 {/*<div style={{display: 'flex', flexWrap:'wrap', margin: '5px'}}>*/}
                 <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>View Book Location</Button>
-        <Collapse isOpen={this.state.collapse}>
-        <Maprender data={this.state.data} history={this.props.history}/>
-        </Collapse>
+        {/* <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>View Book Location</Button> */}
+        {/* <Collapse isOpen={this.state.collapse}> */}
+        <div className="container" style={{float:'right'}}>
+        <Maprender data={this.state.data} history={this.props.history}/></div>
+        {/* </Collapse> */}
       </div>
                 <br></br>
                 <br/>

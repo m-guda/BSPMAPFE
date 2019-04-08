@@ -1,5 +1,5 @@
 import React from 'react';
-
+import logo from '../images/logo.png'
 import {
   Collapse,
   Navbar,
@@ -35,9 +35,12 @@ export default class NavBar extends React.Component  {
     return (
       <div class="container">
       <div class="row">
-          <Navbar color="dark" fixed="top" dark expand="md" scrolling dark>
+          <Navbar color="light" fixed="top" dark expand="md" scrolling dark>
           <div class="col">
-          <NavbarBrand href="/" style={{ fontSize : "30px"}}>Booksplorer</NavbarBrand>
+          {/* <NavbarBrand href="/" style={{ fontSize : "30px"}}>Booksplorer</NavbarBrand> */}
+          <NavbarBrand href="/">
+          <img src={logo} style={{height:'40px'}}/>
+          </NavbarBrand>
           </div>
           
           <NavbarToggler onClick={this.toggle} />
@@ -47,11 +50,11 @@ export default class NavBar extends React.Component  {
          
           <NavItem>
          
-          <NavbarBrand href="/aboutus" >About Us</NavbarBrand>
-          <NavbarBrand href="/viewbook" >ViewBook</NavbarBrand>
+          <NavbarBrand style={{color:'black'}} href="/aboutus" >About Us</NavbarBrand>
+          <NavbarBrand style={{color:'black'}} href="/viewbook" >ViewBook</NavbarBrand>
           
           {/* <NavbarBrand href="/reachout" >Reach Out!</NavbarBrand> */}
-          <NavbarBrand href="/login" >Login</NavbarBrand>
+          <NavbarBrand style={{color:'black'}} href="/login" >Login</NavbarBrand>
           
           </NavItem>
           
