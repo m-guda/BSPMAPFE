@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
-const position = [17.440081, 78.348915];
+const position = [17.387140, 78.491684];
 
 
 class LeafletMap extends Component {
@@ -210,6 +210,7 @@ this.setState({fields:fields});
 
   
   render() {
+    const bounds = L.latlngBounds([position]);
     return (
       <div >
            <NavBar/>
@@ -276,6 +277,7 @@ this.setState({fields:fields});
         zoom={13} 
         style={{ height: '500px', width: '100%' }}
         onClick={this.handleClick}
+        bounds={bounds}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

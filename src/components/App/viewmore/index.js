@@ -8,6 +8,8 @@ import L from 'leaflet';
 import "../../map/map.css";
 import MdCall from 'react-ionicons/lib/MdCall'
 import IosContactOutline from 'react-ionicons/lib/IosContact';
+import contact from '../images/contact2.png'
+import {myicon} from './icon';
 var id;
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -130,9 +132,10 @@ class Viewmore extends React.Component{
                                             <span className="details" >Description&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.description}</span><br></br> 
                                             <center><h4>User Details</h4></center>
                                             <span className="details" ><IosContactOutline/>&nbsp;&nbsp;User Name&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.username}</span><br></br>
-                                            <span className="details" ><MdCall/>&nbsp;&nbsp;Contact Us&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.phoneno}</span><br></br> <br/>
+                                            <span className="details" ><MdCall/>Contact on WhatsApp:&nbsp;&nbsp;<a href={'https://wa.me/'+91+this.state.phoneno}><img src={contact} style={{width:'60px'}}/></a></span><br></br> <br/> 
+                                            {/* <span className="details" ><MdCall/>&nbsp;&nbsp;Contact Us&nbsp;&nbsp;:&nbsp;&nbsp;{this.state.phoneno}</span><br></br> <br/> */}
                                            
-                                           
+                                            
                                             
                                            
                                     
@@ -146,8 +149,8 @@ class Viewmore extends React.Component{
       <Map
                                                 ref={this.mapRef}
                                                 center={position}
-                                                zoom={13}
-                                                style={{ height: '1000px', width: '100%' }}
+                                                zoom={12}
+                                                style={{ height: '1000px', width: '100%', marginLeft: '0vh', marginTop: '5vh' }}
                                             >
 
                                                 <TileLayer
@@ -155,9 +158,12 @@ class Viewmore extends React.Component{
                                                     attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                                                 />
 
+                                               
+<Marker style={{position:"relative"}} position={['17.412009', '78.398795']} icon={myicon}  >
+<Popup minWidth={"150"} closeButton={true} minHeight={5}><div>Hey! your are here</div></Popup>
+</Marker>
 
-
-                                                <Marker position={[this.state.latitude, this.state.longitude]}>
+                                                <Marker style={{position:"relative"}} position={[this.state.latitude, this.state.longitude]} >
                                                 <Popup minWidth={"200"} closeButton={true} minHeight={10}>
                                  
                                                     <div>
@@ -169,7 +175,6 @@ class Viewmore extends React.Component{
                                                 </Popup>
                                                 </Marker>
                                             </Map>
-                       
       </div>
      
       </div>
