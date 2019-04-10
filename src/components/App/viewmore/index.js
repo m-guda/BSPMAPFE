@@ -1,6 +1,7 @@
 import React from "react";
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol,MDBRow } from 'mdbreact';
 import CondNav from "../condnav";
+// import geodist from "geodist";
 import { Collapse, Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -104,12 +105,11 @@ class Viewmore extends React.Component{
     }
    
     render(){
-
-
-         
-       
-
-        return (
+        var geodist = require('geodist')
+        var dist = geodist({lat: this.state.latitude, lon: this.state.longitude}, {lat: 17.440081, lon: 78.348915} ,{format: true, unit: 'km'})
+console.log('anfvwefiewgivervnerbgewnverbibvu',dist)    
+        
+         return (
             
             <div>
           <CondNav/><br/><br/><br/><br/><br/><br/>
@@ -169,7 +169,8 @@ class Viewmore extends React.Component{
                                                     <div>
                                                     <b>{this.state.username}</b><br></br>
                                                 
-                                                    {this.state.address}
+                                                    {this.state.address}<br/>
+                                                     Distance: <b>{dist}</b>
                                                     
                                                     </div>
                                                 </Popup>

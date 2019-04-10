@@ -4,7 +4,7 @@ import L from 'leaflet';
 import IosCall from 'react-ionicons/lib/IosCall'
 import IosContact from 'react-ionicons/lib/IosContact'
 import IosCopy from 'react-ionicons/lib/IosCopy'
-
+import {myicon} from '../App/viewmore/icon';
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -25,6 +25,8 @@ class Maprender extends Component {
 
   
   render() {
+    var geodist = require('geodist')
+    var dist;// console.log('anfvwefiewgivervnerbgewnverbibvu',dist)    
     return (
       <Map
         ref={this.mapRef}
@@ -38,11 +40,17 @@ class Maprender extends Component {
         />
         {
           this.props.data.map((data) => (
+          
+
             <Marker position={[parseFloat(data.user.latitude), parseFloat(data.user.longitude)]}>
-              <Popup><IosContact/>Username:{data.user.username}<br /><IosCall/>Contact:{data.user.phoneno} <br/> <IosCopy/>Copies:{data.count}</Popup>
+              {dist= geodist({lat: data.user.latitude, lon: data.user.longitude}, {lat: 17.440081, lon: 78.348915} ,{format: true, unit: 'km'})}
+              <Popup><IosContact/>Username:{data.user.username}<br /><IosCall/>Contact:{data.user.phoneno} <br/> <IosCopy/>Copies:{data.count}<br/>Distance:{dist}</Popup>
             </Marker>
           ))
         }
+        <Marker style={{position:"relative"}} position={['17.412009', '78.398795']} icon={myicon}  >
+<Popup minWidth={"150"} closeButton={true} minHeight={5}><div>Hey! your are here</div></Popup>
+</Marker>
       </Map>
     );
   }
