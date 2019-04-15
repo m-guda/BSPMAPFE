@@ -12,7 +12,8 @@ export default class UpdateProfile extends React.Component  {
             email: "",
             address: "",
             phoneno:"",
-           
+           latitude:'',
+           longitude:'',
             show: false,
            
           }
@@ -24,6 +25,8 @@ export default class UpdateProfile extends React.Component  {
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleAddressChange = this.handleAddressChange.bind(this);
        this.handlePhoneChange = this.handlePhoneChange.bind(this);
+       this.handleLatitudeChange = this.handleLatitudeChange.bind(this);
+       this.handleLongitudeChange = this.handleLongitudeChange.bind(this);
     //    this.handlePincodeChange = this.handlePincodeChange.bind(this);
         this.onUpdateClick = this.onUpdateClick.bind(this);  
         
@@ -39,6 +42,8 @@ export default class UpdateProfile extends React.Component  {
             email: this.state.email,
             address:this.state.address,
             phoneno:this.state.phoneno,
+            latitude:this.state.latitude,
+            longitude:this.state.longitude
             // pincode:this.state.pincode,
           }
           console.log(body)
@@ -46,6 +51,8 @@ export default class UpdateProfile extends React.Component  {
           console.log(body.email)
           console.log(body.phoneno)
           console.log(this.state.address);
+          console.log(this.state.latitude);
+          console.log(this.state.longitude);
           console.log(body.pincode);
           const url = "http://10.10.200.19:9000/users/update";
           console.log("url:"+url)
@@ -106,6 +113,8 @@ export default class UpdateProfile extends React.Component  {
     phoneno:contents.phoneno,
     address:contents.address,
     pincode:contents.pincode,
+    latitude:contents.latitude,
+    longitude:contents.longitude
 })
 console.log('view details'+this.state)
 })
@@ -133,6 +142,20 @@ console.log('view details'+this.state)
       handleAddressChange(event) {
         this.setState({ address: event.target.value})
         console.log("Username: " + this.state.address)
+       // this.setState({ address: event.target.value})
+        // fields.uname= event.target.value
+        // console.log("Username: " + fields.uname)
+      }
+      handleLatitudeChange(event) {
+        this.setState({ latitude: event.target.value})
+        console.log("Username: " + this.state.latitude)
+       // this.setState({ address: event.target.value})
+        // fields.uname= event.target.value
+        // console.log("Username: " + fields.uname)
+      }
+      handleLongitudeChange(event) {
+        this.setState({ longitude: event.target.value})
+        console.log("Username: " + this.state.longitude)
        // this.setState({ address: event.target.value})
         // fields.uname= event.target.value
         // console.log("Username: " + fields.uname)
@@ -198,6 +221,12 @@ console.log('view details'+this.state)
                                 </div><span class="badge badge-secondary"></span>
                             </div>
     </a>
+    <a class="list-group-item" href="/viewcreated">
+                           
+                               
+                           <div class="d-inline-block font-weight text-uppercase">Created Book</div>
+                      
+               </a>
                         <a class="list-group-item" href="/wishlist">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fe-icon-heart mr-1 text-muted"></i>
@@ -242,6 +271,16 @@ console.log('view details'+this.state)
                         <div class="form-group">
                             <label for="account-address">Address</label>
                             <input class="form-control" type="text" id="account-addresss" name="address" value={this.state.address} onChange = {this.handleAddressChange}/>
+                        </div>
+                        </div>
+                        <div class="col-md-30">
+                        <div class="form-group">
+                            <label for="account-latitude">Latitude</label>
+                            <input class="form-control" type="text" id="account-latitude" name="latitude" value={this.state.latitude} onChange = {this.handleLatitudeChange}/>
+                        </div>
+                        <div class="form-group">
+                            <label for="account-longitude">Longitude</label>
+                            <input class="form-control" type="text" id="account-longitude" name="longitude" value={this.state.longitude} onChange = {this.handleLongitudeChange}/>
                         </div>
 </div>
 {/* <div class="col-md-30">

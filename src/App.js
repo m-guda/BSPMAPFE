@@ -34,6 +34,7 @@ import MapRender from './components/mapRender';
 import CreateBook from './components/App/updatebook/createdbook';
 import UpdateBook from './components/App/updatebook/updatebook';
 import Wishlist from './components/App/wishlist/index';
+import Viewcreated from './components/App/viewcreatedbook';
 // import LocateBook from "./components/App/locatebook/index"
 class App extends PureComponent {
  
@@ -57,7 +58,7 @@ class App extends PureComponent {
                 <Route exact path="/viewmore" component={Viewmore}/>
                 <Route exact path="/view" component={View}/>
                 <Route exact path="/wishlist" component={Wishlist}/>
-
+                <Route exact path="/viewcreated" component={Viewcreated}/>
                 <Route exact path="/updatebook" component={CreateBook}/>
                 <Route exact path="/editbook" component={UpdateBook}/>
                 <Route exact path="/maplocate" component={MapLocate}/>

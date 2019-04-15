@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import IosCall from 'react-ionicons/lib/IosCall'
+import MdNavigate from 'react-ionicons/lib/MdNavigate'
 import IosContact from 'react-ionicons/lib/IosContact'
 import IosCopy from 'react-ionicons/lib/IosCopy'
 import {myicon} from '../App/viewmore/icon';
@@ -44,7 +45,7 @@ class Maprender extends Component {
 
             <Marker position={[parseFloat(data.user.latitude), parseFloat(data.user.longitude)]}>
               {dist= geodist({lat: data.user.latitude, lon: data.user.longitude}, {lat: 17.440081, lon: 78.348915} ,{format: true, unit: 'km'})}
-              <Popup><IosContact/>Username:{data.user.username}<br /><IosCall/>Contact:{data.user.phoneno} <br/> <IosCopy/>Copies:{data.count}<br/>Distance:{dist}</Popup>
+              <Popup><IosContact/>Username:{data.user.username}<br /><IosCall/>Contact:{data.user.phoneno} <br/> <IosCopy/>Copies:{data.count}<br/>< MdNavigate/>Distance:{dist}</Popup>
             </Marker>
           ))
         }

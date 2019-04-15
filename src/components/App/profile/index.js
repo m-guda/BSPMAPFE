@@ -108,6 +108,12 @@ console.log('view details'+this.state)
                                     <div class="d-inline-block font-weight text-uppercase">My Wishlist</div>
                                
                         </a>
+                        <a class="list-group-item" href="/viewcreated">
+                           
+                               
+                           <div class="d-inline-block font-weight text-uppercase">Created Book</div>
+                      
+               </a>
                         <a class="list-group-item" href="/updateprofile" >
 
 
@@ -145,9 +151,9 @@ console.log('view details'+this.state)
                             <input class="form-control" type="text" id="account-addresss" name="address" value={this.state.address} disabled/>
                         </div>
                     </div>
-                    <div style={{float:'left'}}> 
+                    {/* <div style={{float:'left'}}> 
                     <CreatedBook id={this.state.id} />
-                     </div>
+                     </div> */}
             </div>
             </div>
        

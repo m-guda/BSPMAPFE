@@ -6,7 +6,7 @@ import axios from "axios";
 import "../card/Book.css";
 import {withRouter} from 'react-router-dom';
 import Footer from '../footer';
-
+import Search from '../search/index'
 import CondNav from "../condnav";
 
 class ViewBook extends React.Component {
@@ -43,7 +43,10 @@ class ViewBook extends React.Component {
       console.log(this.state.books)
       return(
           <div>
-        <CondNav/><br/><br/><br/><br/>
+        <CondNav/><br/><br/>
+        <div>
+        <br/><br/><Search/>
+        </div><br/><br/>
      
         <Cards books={this.state.books} />
         <br/><br/>

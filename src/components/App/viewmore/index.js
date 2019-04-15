@@ -149,7 +149,7 @@ console.log('anfvwefiewgivervnerbgewnverbibvu',dist)
       <Map
                                                 ref={this.mapRef}
                                                 center={position}
-                                                zoom={12}
+                                                zoom={13}
                                                 style={{ height: '1000px', width: '100%', marginLeft: '0vh', marginTop: '5vh' }}
                                             >
 
